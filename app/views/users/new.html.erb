@@ -1,11 +1,10 @@
-<form action="/users" accept-charset="UTF-8" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-  <label for="email">email</label>
-  <input type="text" name="user[email]" id="email">
-  <label for="username">username</label>
-  <input type="text" name="user[username]" id="username">
-  <label for="password">password</label>
-  <input type="password" name="user[password]" id="password">
-  <input id="user_id" value="1" type="hidden" name="user_id">
-  <input type="submit" name="commit" value="Create User" data-disable-with="Creating User">
-</form>
+<%= form_with model: @user do |form| %>
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+  <%= form.label :username %>
+  <%= form.text_field :username %>
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+  <%= form.hidden_field :user_id, value: 1 %>
+  <%= form.submit "Create User", data: { disable_with: "Creating User" } %>
+<% end %>
