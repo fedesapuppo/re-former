@@ -1,1 +1,11 @@
-Create user here!
+<form action="/users" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <label for="email">email</label>
+  <input type="text" name="user[email]" id="email">
+  <label for="username">username</label>
+  <input type="text" name="user[username]" id="username">
+  <label for="password">password</label>
+  <input type="password" name="user[password]" id="password">
+  <input id="user_id" value="1" type="hidden" name="user_id">
+  <input type="submit" name="commit" value="Create User" data-disable-with="Creating User">
+</form>
