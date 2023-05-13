@@ -7,9 +7,24 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
     
       if @user.save
+        flash[:success_create] = "User successfully created."
         redirect_to new_user_path
       else
         render :new, status: :unprocessable_entity
+      end
+    end
+
+    def edit
+      @user = User.find(params[:id])
+    end
+  
+    def update
+      @user = User.find(params[:id])
+      if @user.update(user_params)
+        flash[:success_update] = "User successfully updated."
+        redirect_to update_user_path
+      else
+        render :edit
       end
     end
 
